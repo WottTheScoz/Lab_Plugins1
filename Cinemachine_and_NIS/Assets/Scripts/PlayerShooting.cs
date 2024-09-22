@@ -13,12 +13,15 @@ public class PlayerShooting : MonoBehaviour
     Player playerInfo = new Player();
     Timer cooldownTimer = new Timer();
 
+    public delegate void ShootingDelegate();
+    public event ShootingDelegate OnShoot;
+
     // Start is called before the first frame update
     void Start()
     {
         // Subscribes shooting to PlayerInputReader
         input = gameObject.GetComponent<PlayerInputReader>();
-        input.OnShoot += Shooting;
+        input.OnShootInput += Shooting;
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class PlayerShooting : MonoBehaviour
         if(timerCondition == 0)
         {
             Instantiate(laserPrefab, transform.position + Vector3.up, Quaternion.identity);
+            OnShoot?.Invoke();
             cooldownTimer.TurnTimerOn(true);
         }
     }

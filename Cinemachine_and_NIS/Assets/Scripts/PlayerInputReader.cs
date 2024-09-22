@@ -8,7 +8,7 @@ public class PlayerInputReader : MonoBehaviour
     public PlayerInput playerControls;
 
     public delegate void PlayerInputDelegate();
-    public event PlayerInputDelegate OnShoot;
+    public event PlayerInputDelegate OnShootInput;
 
     InputAction move;
     InputAction fire;
@@ -36,7 +36,7 @@ public class PlayerInputReader : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext context)
     {
-        OnShoot?.Invoke();
+        OnShootInput?.Invoke();
     }
 
     public Vector2 GetMoveDirection()
