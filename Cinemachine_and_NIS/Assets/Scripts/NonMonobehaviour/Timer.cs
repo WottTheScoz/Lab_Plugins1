@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Timer
 {
-    public bool timerIsOn = true;
+    bool timerIsOn = true;
     float timer = 0;
     
     // Timer that resets infinitely while turned on
@@ -49,7 +49,7 @@ public class Timer
         }
         else
         {
-            return 0;
+            return 2;
         }
     }
 
@@ -57,5 +57,11 @@ public class Timer
     public void TurnTimerOn(bool timerCondition)
     {
         timerIsOn = timerCondition;
+    }
+
+    // resets timer to 0
+    public void ResetTimer()
+    {
+        timer = 0;
     }
 }

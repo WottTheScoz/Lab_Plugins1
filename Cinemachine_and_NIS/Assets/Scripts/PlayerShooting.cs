@@ -35,7 +35,7 @@ public class PlayerShooting : MonoBehaviour
     void Shooting()
     {
         // Shoots if cooldown timer is complete
-        if(timerCondition == 0)
+        if(timerCondition == 2)
         {
             Instantiate(laserPrefab, transform.position + Vector3.up, Quaternion.identity);
             OnShoot?.Invoke();

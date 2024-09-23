@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public delegate void MeteorDelegate();
+    public event MeteorDelegate OnDeath;
 
     // Update is called once per frame
     void Update()
@@ -26,6 +22,7 @@ public class Meteor : MonoBehaviour
     {
         if (whatIHit.tag == "Laser")
         {
+            OnDeath?.Invoke();
             GameObject.Find("GameManager").GetComponent<GameManager>().meteorCount++;
             Destroy(whatIHit.gameObject);
             Destroy(this.gameObject);
